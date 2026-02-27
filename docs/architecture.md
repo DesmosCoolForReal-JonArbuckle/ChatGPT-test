@@ -24,6 +24,15 @@ At runtime (`src/vulkan_rt.c`):
 - BVH traversal API with extension room for SAH/SBVH/LBVH splits.
 - Möller–Trumbore ray/triangle test.
 - Barycentric UV/normal interpolation.
+- `ENABLE_HARDWARE_RT`: Vulkan-based hardware RT path (feature probe and extension point).
+- `ENABLE_SOFTWARE_RT`: CPU fallback path that guarantees rendering output.
+
+## Optimization techniques implemented
+
+- Axis-aligned bounds on geometry for broad-phase culling.
+- BVH API with room for SAH/SBVH/LBVH splitting upgrades.
+- Möller–Trumbore ray-triangle intersections.
+- Barycentric interpolation for UVs and normals.
 
 ## Material workflow
 
@@ -36,3 +45,9 @@ At runtime (`src/vulkan_rt.c`):
 
 - `shaders/raytracing.slang`: dedicated RT (`raygeneration`, `miss`, `closesthit`).
 - `shaders/compute_fallback.slang`: compute fallback (`compute`).
+- Normal map decoding (tangent-space approximation)
+
+## Platform notes
+
+- Project builds as C11.
+- CMake handles Windows/Linux generation and Debug/Release variants.

@@ -19,5 +19,6 @@ typedef struct {
 } vulkan_rt_report;
 
 int render_hardware_vulkan(const scene *s, vulkan_rt_report *out_report);
+int render_hardware_vulkan(const scene *s);
 
 #endif

@@ -11,6 +11,9 @@ struct Material {
 struct Payload {
     float3 radiance;
     float hitT;
+// Slang shader skeleton for Vulkan ray tracing pipeline.
+struct Payload {
+    float3 radiance;
     uint hit;
 };
 
@@ -28,6 +31,13 @@ void missMain(inout Payload payload)
 {
     payload.radiance = float3(0.03, 0.03, 0.05);
     payload.hitT = -1.0;
+void raygenMain() {
+    // Integrate TLAS traversal, material sampling and texture/normal maps here.
+}
+
+[shader("miss")]
+void missMain(inout Payload payload) {
+    payload.radiance = float3(0.03, 0.03, 0.05);
     payload.hit = 0;
 }
 
@@ -38,5 +48,7 @@ void closestHitMain(inout Payload payload)
     // interpolate barycentrics, sample albedo + normal map, run BRDF.
     payload.radiance = float3(1.0, 0.0, 1.0);
     payload.hitT = 1.0;
+void closestHitMain(inout Payload payload) {
+    payload.radiance = float3(1.0, 0.0, 1.0);
     payload.hit = 1;
 }
