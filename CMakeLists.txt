@@ -46,3 +46,5 @@ endif()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/shaders/raytracing.slang
                ${CMAKE_CURRENT_BINARY_DIR}/raytracing.slang COPYONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/shaders/compute_fallback.slang
+               ${CMAKE_CURRENT_BINARY_DIR}/compute_fallback.slang COPYONLY)

@@ -26,6 +26,8 @@ int run_app(void) {
     }
 
 #ifdef ENABLE_HARDWARE_RT
+    vulkan_rt_report report = {0};
+    if (!render_hardware_vulkan(&s, &report)) {
     if (!render_hardware_vulkan(&s)) {
         fprintf(stderr, "Hardware path unavailable or failed, continuing with software fallback.\n");
     }
